@@ -9,7 +9,7 @@ class AnswerInline(admin.TabularInline):
 
 class ExamAdmin(admin.ModelAdmin):
   list_display = ('short_name', 'student')
-  list_filter = ('short_name',)
+  list_filter = ('short_name', 'student')
   inlines = (AnswerInline,)
 
 class AnswerAdmin(admin.ModelAdmin):

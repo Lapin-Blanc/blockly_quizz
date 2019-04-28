@@ -43,7 +43,7 @@ class Answer(models.Model):
 class Exam(models.Model):
   short_name = models.CharField(max_length=50, null=True)
   student = models.ForeignKey(User, on_delete=models.CASCADE)
-  date_created = models.DateTimeField(auto_now=True)
+  questionnaire = models.ForeignKey(Questionnaire, on_delete=models.CASCADE)
   complete = models.BooleanField(default=False)
   
   def get_absolute_url(self):
