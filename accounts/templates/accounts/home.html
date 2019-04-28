@@ -1,0 +1,15 @@
+<!-- templates/home.html-->
+{% extends 'accounts/base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+  <h2>Hi {{ user.username }}!</h2>
+  <p><a href="{% url 'questions:exams_list' %}">Vers les tests</a></p>
+  <p><a href="{% url 'logout' %}">Déconnexion</a></p>
+{% else %}
+  <p>Vous n'êtes pas connecté</p>
+  <a href="{% url 'login' %}">Connexion</a>
+{% endif %}
+{% endblock %}

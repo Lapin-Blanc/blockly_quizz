@@ -17,6 +17,9 @@
     {% else %}
       <h2>Pas de test disponible pour {{ user }} en ce moment</h2>
     {% endif %}
+    
+    <a href="{% url 'accounts:home' %}">Retour à l'accueil</a>
+
   </body>
 
 </html>

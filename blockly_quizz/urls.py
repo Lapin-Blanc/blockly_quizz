@@ -19,5 +19,7 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('ckeditor/', include('ckeditor_uploader.urls')),
-    path('', include('questions.urls')),
+    path('quizz/', include('questions.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('', include('accounts.urls')),
 ]
