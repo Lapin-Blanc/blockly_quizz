@@ -7,12 +7,16 @@
   </head>
 
   <body>
+    {% if exams %}
+    <h2>Liste des tests disponibles pour {{ user }}</h2>
     <ul>
-      <h2>Liste des tests disponibles pour {{ user }}</h2>
       {% for exam in exams %}
       <li><a href="{{ exam.get_absolute_url }}">{{ exam }}</a></li>
       {% endfor %}    
     </ul>
+    {% else %}
+      <h2>Pas de test disponible pour {{ user }} en ce moment</h2>
+    {% endif %}
   </body>
 
 </html>
