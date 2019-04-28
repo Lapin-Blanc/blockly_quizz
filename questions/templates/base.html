@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <title>quizz</title>
+    
+    <script src="{% static 'blockly_compressed.js' %}"></script>
+    <script src="{% static 'blocks_compressed.js' %}"></script>
+    <script src="{% static 'python_compressed.js' %}"></script>
+    <script src="{% static 'msg/js/fr.js' %}"></script>
+
+  </head>
+
+  <body>
+  {% block xml %}
+  {% endblock %}
+  <div style="width: 100%">
+    <div id="question" style="display: inline-block; height: 600px; width: 38%; vertical-align:top; margin:15px;">
+            {% block question %}
+            {% endblock %}
+    </div>
+    <div id="blocklyDiv"
+        style="display: inline-block; height: 600px; width: 58%">
+    </div>
+  </div>
+ 
+    <script>
+      var workspace = Blockly.inject('blocklyDiv',
+          {toolbox: document.getElementById('toolbox')});
+      
+      Blockly.Xml.domToWorkspace(document.getElementById('workspaceBlocks'),
+                               workspace);
+    </script>
+      {% block answer %}
+      {% endblock %}
+
+
+  </body>
+
+</html>

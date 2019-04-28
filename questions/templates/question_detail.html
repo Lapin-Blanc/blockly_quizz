@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block question %}
+  <h1>{{ question.short_name }}</h1>
+  <p>{{ question.states|safe }}</p>
+{% endblock %}
+
+{% block xml %}
+  {{ question.toolbox|safe }}
+  {{ question.workspace|safe }}
+{% endblock %}

@@ -1,0 +1,18 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <title>questions</title>
+    
+  </head>
+
+  <body>
+    <ul>
+    {% for question in questions %}
+      <li><a href="{{ question.get_absolute_url }}">{{ question }}</a></li>
+    {% endfor %}
+    </ul>  
+  </body>
+
+</html>
