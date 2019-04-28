@@ -29,7 +29,7 @@ class Answer(models.Model):
   question = models.ForeignKey(Question, on_delete=models.CASCADE)
   exam = models.ForeignKey('Exam', on_delete=models.CASCADE, null=True)
   answer = models.TextField(null=True, blank=True)
-  remark = models.TextField(null=True, blank=True)
+  remark = models.TextField("remarque", null=True, blank=True)
   answered = models.BooleanField(default=False)
   date_modified = models.DateTimeField(auto_now_add=True)
   
@@ -44,8 +44,7 @@ class Exam(models.Model):
   short_name = models.CharField(max_length=50, null=True)
   student = models.ForeignKey(User, on_delete=models.CASCADE)
   date_created = models.DateTimeField(auto_now=True)
-  # ~ date_modified = models.DateTimeField(auto_now_add=True)
-  # ~ questionnaire = models.ForeignKey(Questionnaire, on_delete=models.CASCADE)
+  complete = models.BooleanField(default=False)
   
   def get_absolute_url(self):
     return reverse('questions:exam', args=[str(self.id)])

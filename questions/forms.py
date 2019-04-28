@@ -7,5 +7,8 @@ class AnswerForm(forms.ModelForm):
     model = Answer
     exclude = []
     widgets = {
-      'answer' : forms.Textarea(attrs={'id': 'answer'}),
+      'answer' : forms.HiddenInput(attrs={'id': 'answer',}),
+      'question' : forms.HiddenInput(),
+      'exam' : forms.HiddenInput(),
+      'answered' : forms.HiddenInput(),
     }

@@ -8,6 +8,7 @@
 
   <body>
     <ul>
+      <h2>Liste des tests disponibles pour {{ user }}</h2>
       {% for exam in exams %}
       <li><a href="{{ exam.get_absolute_url }}">{{ exam }}</a></li>
       {% endfor %}    

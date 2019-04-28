@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% block title %}Question{% endblock %}
+
 {% block question %}
   <h1>{{ question.short_name }}</h1>
   <p>{{ question.states|safe }}</p>
@@ -14,12 +16,18 @@
 {% block answer %}
   <form method="POST">
     {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="répondre">
+    <div>
+      <div style="display:inline-block;"><table>{{ form.as_table }}</table></div>
+      <div style="display:inline-block;vertical-align:top;"><input type="submit" value="répondre"></div>
+    </div>
+    
+    
   </form>
   <script>
   function myUpdateFunction(event) {
     var xml = Blockly.Xml.workspaceToDom(workspace)
+    xml.setAttribute("id", "workspaceBlocks");
+    xml.setAttribute("hidden", "true");
     var txt = Blockly.Xml.domToPrettyText(xml)
     document.getElementById('answer').value = txt;
   }

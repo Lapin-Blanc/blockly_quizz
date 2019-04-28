@@ -1,29 +1,16 @@
 {% extends 'base.html' %}
 
+{% block title %}Réponses{% endblock %}
+
 {% block question %}
-  <h1>{{ question.short_name }}</h1>
-  <p>{{ question.states|safe }}</p>
+  <h2 style="border: solid black 1px; padding:5px;">{{ answer.exam }}</h2>
+  <p style="color:blue;"><strong>Remarque&nbsp;: </strong>{{ answer.remark }}</p>
+  <h3>{{ answer.question.short_name }}</h3>
+  <p>{{ answer.question.states|safe }}</p>
 {% endblock %}
 
 {% block xml %}
-  {{ question.toolbox|safe }}
-  {{ question.workspace|safe }}
-{% endblock %}
-
-
-{% block answer %}
-  <form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="répondre">
-  </form>
-  <script>
-  function myUpdateFunction(event) {
-    var xml = Blockly.Xml.workspaceToDom(workspace)
-    var txt = Blockly.Xml.domToPrettyText(xml)
-    document.getElementById('answer').value = txt;
-  }
-  workspace.addChangeListener(myUpdateFunction);  
-  </script>
+  {{ answer.question.toolbox|safe }}
+  {{ answer.answer|safe }}
 {% endblock %}
 
